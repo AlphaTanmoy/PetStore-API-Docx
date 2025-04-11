@@ -1,0 +1,182 @@
+.api-documentation {
+  padding: 2rem;
+  background-color: #f9f9f9;
+  min-height: 100vh;
+
+  h1 {
+    color: #2c3e50;
+    margin-bottom: 2rem;
+    font-size: 2.5rem;
+    text-align: center;
+  }
+
+  .section {
+    margin-bottom: 3rem;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background-color: #f8f9fa;
+      border-bottom: 1px solid #e9ecef;
+
+      h2 {
+        color: #2c3e50;
+        margin: 0;
+        font-size: 1.5rem;
+      }
+
+      .info-button {
+        background-color: #3498db;
+        color: white;
+        border: none;
+        padding: 0.5rem 1rem;
+        border-radius: 4px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+
+        &:hover {
+          background-color: #2980b9;
+        }
+
+        .button-icon {
+          font-size: 0.8rem;
+        }
+      }
+    }
+
+    .content {
+      padding: 1rem 2rem;
+
+      .filter {
+        margin-bottom: 1rem;
+
+        label {
+          margin-right: 0.5rem;
+          color: #666;
+        }
+
+        select {
+          padding: 0.5rem;
+          border: 1px solid #ddd;
+          border-radius: 4px;
+          background-color: white;
+        }
+      }
+
+      .api-card-list {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+
+        .api-card {
+          border: 1px solid #ddd;
+          border-left: 6px solid #ccc;
+          border-radius: 4px;
+          background: #fff;
+          overflow: hidden;
+          transition: all 0.3s ease;
+
+          &.get {
+            border-left-color: #27ae60;
+          }
+
+          &.post {
+            border-left-color: #f1c40f;
+          }
+
+          &.put {
+            border-left-color: #16a085;
+          }
+
+          &.delete {
+            border-left-color: #e74c3c;
+          }
+
+          .api-card-header {
+            padding: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            cursor: pointer;
+            background-color: #f8f9fa;
+
+            .method-tag {
+              font-weight: bold;
+              font-size: 0.85rem;
+              padding: 0.25rem 0.5rem;
+              border-radius: 4px;
+              color: white;
+              text-transform: uppercase;
+
+              &.get { background-color: #2ecc71; }
+              &.post { background-color: #f39c12; }
+              &.put { background-color: #1abc9c; }
+              &.delete { background-color: #c0392b; }
+            }
+
+            .api-title {
+              font-weight: 600;
+              color: #2c3e50;
+            }
+
+            .api-path {
+              margin-left: auto;
+              font-family: monospace;
+              color: #555;
+              font-size: 0.9rem;
+            }
+          }
+
+          .api-card-body {
+            padding: 1rem;
+
+            p {
+              margin: 0.5rem 0;
+              strong {
+                color: #34495e;
+              }
+            }
+
+            pre {
+              background: #f4f4f4;
+              padding: 0.5rem;
+              border-radius: 4px;
+              white-space: pre-wrap;
+              word-wrap: break-word;
+            }
+          }
+
+          .hidden {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+}
+
+.api-role-tag {
+  display: inline-block;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-weight: bold;
+  color: white;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+
+  &.master         { background-color: #6c5ce7; }
+  &.customer       { background-color: #00b894; }
+  &.doctor         { background-color: #0984e3; }
+  &.customer-care  { background-color: #fd79a8; }
+  &.raider         { background-color: #e17055; }
+  &.admin          { background-color: #d63031; }
+  &.guest          { background-color: #636e72; }
+  &.seller         { background-color: #fab1a0; }
+}
