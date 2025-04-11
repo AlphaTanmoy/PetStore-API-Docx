@@ -10,12 +10,12 @@ export enum Microservice {
   AUTHENTICATION = 'Authentication',
   CORE = 'Core',
   DOCTOR = 'Doctor',
-  LIVENESS = 'Liveness',
+  KYC = 'Kyc',
   MANAGEMENT = 'Management',
   S3 = 'S3',
-  SANCTION = 'Sanction',
   SELLER = 'Seller',
-  USER = 'User'
+  USER = 'User',
+  PAYMENT = 'Payment',
 }
 
 export enum Role {
