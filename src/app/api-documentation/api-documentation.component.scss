@@ -12,16 +12,16 @@
 
   .section {
     margin-bottom: 3rem;
-    background: white;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
 
     .section-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: 1rem 2rem;
-      background-color: #f8f9fa;
+      background-color: rgba(255, 255, 255, 0.6); // semi-transparent over gradient
       border-bottom: 1px solid #e9ecef;
 
       h2 {
@@ -53,7 +53,7 @@
 
     .content {
       padding: 1rem 2rem;
-
+      background: #fff;
       .filter {
         margin-bottom: 1rem;
 
@@ -67,6 +67,7 @@
           border: 1px solid #ddd;
           border-radius: 4px;
           background-color: white;
+          background: #fff;
         }
       }
 
@@ -84,7 +85,7 @@
           transition: all 0.3s ease;
 
           &.get {
-            border-left-color: #27ae60;
+            border-left-color: #16bb00fd;
           }
 
           &.post {
@@ -92,7 +93,7 @@
           }
 
           &.put {
-            border-left-color: #16a085;
+            border-left-color: #0044ff;
           }
 
           &.delete {
@@ -107,38 +108,51 @@
             cursor: pointer;
             background-color: #f8f9fa;
 
-            .method-tag {
+            .api-method {
               font-weight: bold;
-              font-size: 0.85rem;
-              padding: 0.25rem 0.5rem;
-              border-radius: 4px;
-              color: white;
-              text-transform: uppercase;
+              font-size: 0.7rem;
 
-              &.get { background-color: #2ecc71; }
-              &.post { background-color: #f39c12; }
-              &.put { background-color: #1abc9c; }
-              &.delete { background-color: #c0392b; }
+              &.get    { color: #16bb00fd; }
+              &.post   { color: #f39c12; }
+              &.put    { color: #0044ff; }
+              &.delete { color: #c0392b; }
+              &.not-implemented {
+                color: rgb(247, 0, 255) !important;
+              }
             }
+
 
             .api-title {
               font-weight: 600;
               color: #2c3e50;
+              &.implemented {
+                color: #555;
+              }
+              &.not-implemented {
+                color: rgb(247, 0, 255) !important;
+              }
             }
 
             .api-path {
               margin-left: auto;
               font-family: monospace;
-              color: #555;
               font-size: 0.9rem;
+              &.implemented {
+                color: #555;
+              }
+              &.not-implemented {
+                color: rgb(247, 0, 255) !important;
+              }
             }
           }
 
           .api-card-body {
             padding: 1rem;
+            border-top: 1px solid #eee;
 
             p {
               margin: 0.5rem 0;
+
               strong {
                 color: #34495e;
               }
@@ -152,16 +166,13 @@
               word-wrap: break-word;
             }
           }
-
-          .hidden {
-            display: none;
-          }
         }
       }
     }
   }
 }
 
+// Role tags + hidden class
 .api-role-tag {
   display: inline-block;
   padding: 0.25rem 0.5rem;
@@ -179,4 +190,8 @@
   &.admin          { background-color: #d63031; }
   &.guest          { background-color: #636e72; }
   &.seller         { background-color: #fab1a0; }
+}
+
+.hidden {
+  display: none !important;
 }

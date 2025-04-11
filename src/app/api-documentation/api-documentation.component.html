@@ -2,21 +2,43 @@
   <h1>Microservices API Documentation</h1>
 
   <div class="api-sections">
-    <div *ngFor="let service of MICROSERVICES" class="section">
+    <div
+      *ngFor="let service of MICROSERVICES"
+      class="section"
+      [ngStyle]="{ background: gradientMap[service] || '#f4f4f4' }"
+    >
       <div class="section-header">
-        <h2>{{ service }}</h2>
-        <button class="info-button" (click)="toggleSection(service + '-content')">
+        <h2>
+          {{ service }}
+          ({{ getImplementationStats(service).total }} APIs,
+          <i class="fas fa-check-circle" style="color: green"></i>
+          {{ getImplementationStats(service).implemented }},
+          <i class="fas fa-times-circle" style="color: red"></i>
+          {{ getImplementationStats(service).notImplemented }})
+        </h2>
+
+        <button class="info-button" (click)="toggleSection(service)">
           <span class="button-text">Info</span>
           <span class="button-icon">▼</span>
         </button>
       </div>
 
-      <div [id]="service + '-content'" class="content" [class.hidden]="!sectionExpanded[service]">
+      <div
+        *ngIf="sectionExpanded[service]"
+        [id]="service + '-content'"
+        class="content"
+      >
         <div class="filter">
           <label [for]="service + '-filter'">Filter by method:</label>
-          <select [id]="service + '-filter'" (change)="filterCards(service, $event)">
+          <select
+            [id]="service + '-filter'"
+            (change)="filterCards(service, $event)"
+          >
             <option value="ALL">ALL</option>
-            <option *ngFor="let method of METHODS" [value]="method">{{ method }}</option>
+            <option *ngFor="let method of METHODS" [value]="method">
+              {{ method }}
+            </option>
+            <option value="NOT_IMPLEMENTED">Not Implemented</option>
           </select>
         </div>
 
@@ -25,23 +47,52 @@
             *ngFor="let api of apiData[service]"
             [attr.data-method]="api.method"
             class="api-card"
-            [ngClass]="api.method.toLowerCase()">
-
+            [ngClass]="[
+              api.method.toLowerCase(),
+              api.implemented ? 'implemented' : 'not-implemented'
+            ]"
+          >
             <div class="api-card-header" (click)="toggleCard(api)">
-              <span class="api-title">{{ api.title }}</span>
-              <span class="api-path">{{ api.path }}</span>
+              <span
+                class="api-method"
+                [ngClass]="[
+                  api.method.toLowerCase(),
+                  !api.implemented ? 'not-implemented' : ''
+                ]"
+              >
+                {{ api.method }}
+              </span>
+
+              <span
+                class="api-title"
+                [ngClass]="[
+                  api.method.toLowerCase(),
+                  !api.implemented ? 'not-implemented' : ''
+                ]"
+                >{{ api.title }}</span
+              >
+              <span
+                class="api-path"
+                [ngClass]="[
+                  api.method.toLowerCase(),
+                  !api.implemented ? 'not-implemented' : ''
+                ]"
+                >{{ api.path }}</span
+              >
             </div>
 
             <div class="api-card-body" [class.hidden]="!api.expanded">
               <p>
                 <strong>Access:</strong>
                 <ng-container *ngFor="let role of api.access">
-                  <span class="api-role-tag" [ngClass]="role.toLowerCase().replace('_', '-')">
+                  <span
+                    class="api-role-tag"
+                    [ngClass]="role.toLowerCase().replace('_', '-')"
+                  >
                     {{ getRoleDisplayName(role) }}
                   </span>
                 </ng-container>
               </p>
-              <p><strong>Location:</strong> {{ api.location }}</p>
               <p><strong>Request:</strong></p>
               <pre>{{ api.request }}</pre>
               <p><strong>Response:</strong></p>
