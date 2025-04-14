@@ -211,5 +211,86 @@ export const AdminMicroserviceEndPoints: ApiEndpoint[] = [
     curl: '',
     method: HttpMethod.POST,
     implemented: true
-  }
+  },
+  {
+    title: 'Approve Seller',
+    path: 'http://localhost:8082/seller/approve',
+    access: [Role.ADMIN, Role.MASTER],
+    request: '{}',
+    response: '{}',
+    curl: '',
+    method: HttpMethod.POST,
+    implemented: false
+  },
+  {
+    title: 'Reject Seller',
+    path: 'http://localhost:8082/seller/reject',
+    access: [Role.ADMIN, Role.MASTER],
+    request: '{}',
+    response: '{}',
+    curl: '',
+    method: HttpMethod.POST,
+    implemented: false
+  },
+  {
+    title: 'Approve doctor',
+    path: 'http://localhost:8082/doctor/approve',
+    access: [Role.ADMIN, Role.MASTER],
+    request: '{}',
+    response: '{}',
+    curl: '',
+    method: HttpMethod.POST,
+    implemented: false
+  },
+  {
+    title: 'Reject doctor',
+    path: 'http://localhost:8082/doctor/reject',
+    access: [Role.ADMIN, Role.MASTER],
+    request: '{}',
+    response: '{}',
+    curl: '',
+    method: HttpMethod.POST,
+    implemented: false
+  },
+  {
+    title: 'Approve Raider',
+    path: 'http://localhost:8082/raider/approve',
+    access: [Role.ADMIN, Role.MASTER],
+    request: '{}',
+    response: '{}',
+    curl: '',
+    method: HttpMethod.POST,
+    implemented: false
+  },
+  {
+    title: 'Reject Raider',
+    path: 'http://localhost:8082/raider/approve',
+    access: [Role.ADMIN, Role.MASTER],
+    request: '{}',
+    response: '{}',
+    curl: '',
+    method: HttpMethod.POST,
+    implemented: false
+  },
+  {
+    title: 'Approve Customer-Care',
+    path: 'http://localhost:8082/customer-care/approve',
+    access: [Role.ADMIN, Role.MASTER],
+    request: '{}',
+    response: '{}',
+    curl: '',
+    method: HttpMethod.POST,
+    implemented: false
+  },
+  {
+    title: 'Reject Customer-care',
+    path: 'http://localhost:8082/customer-care/reject',
+    access: [Role.ADMIN, Role.MASTER],
+    request: '{}',
+    response: '{}',
+    curl: '',
+    method: HttpMethod.POST,
+    implemented: false
+  },
+
 ];

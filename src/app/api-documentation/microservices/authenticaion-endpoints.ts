@@ -24,12 +24,33 @@ export const AuthenticationMicroserviceEndPoints: ApiEndpoint[] = [
   },
   {
     title: 'View All Notification For Admin Related API Keys',
-    path: 'http://localhost:8082/notification/apikeyrequest',
+    path: 'http://localhost:8082/notification/apikeyrequest/admin',
+    access: [Role.MASTER],
+    request: '{}',
+    response: '{}',
+    curl: '',
+    method: HttpMethod.POST,
+    implemented: false
+  },
+  {
+    title: 'Approve Admin Api Key Request',
+    path: 'http://localhost:8082/apikeyrequest/admin/approve',
     access: [Role.MASTER],
     request: '{}',
     response: '{}',
     curl: '',
     method: HttpMethod.GET,
-    implemented: true
-  }
+    implemented: false
+  },
+  {
+    title: 'Reject Admin ApiKey Request',
+    path: 'http://localhost:8082/apikeyrequest/admin/reject',
+    access: [Role.MASTER],
+    request: '{}',
+    response: '{}',
+    curl: '',
+    method: HttpMethod.GET,
+    implemented: false
+  },
+
 ]
